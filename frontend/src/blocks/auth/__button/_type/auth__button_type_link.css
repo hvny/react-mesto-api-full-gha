@@ -1,0 +1,12 @@
+.auth__button_type_link{
+    text-decoration: none;
+    color: #ffffff; 
+    margin: 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .auth__button_type_link{
+        font-size: 14px;
+        line-height: 16.94px;
+    }
+}

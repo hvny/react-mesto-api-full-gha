@@ -1,0 +1,8 @@
+.element__button_type_close {
+    width: 18px;
+    height: 19.3px;
+    background-image: url("../../../../images/trash-bin-icon.svg");
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}

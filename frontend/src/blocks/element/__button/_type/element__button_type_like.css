@@ -1,0 +1,7 @@
+.element__button_type_like {
+    width: 22px;
+    height: 19px;
+    margin: 22px 20px 3px 0;
+    background-image: url("../../../../images/heart-shaped-item.svg");
+    align-self: start;
+}

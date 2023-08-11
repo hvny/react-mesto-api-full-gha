@@ -1,0 +1,16 @@
+.tooltip__title{
+    width: 358px;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    margin: 0;
+    text-align: center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .tooltip__title{
+        width: 244px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}

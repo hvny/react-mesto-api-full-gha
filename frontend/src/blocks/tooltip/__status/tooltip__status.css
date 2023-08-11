@@ -1,0 +1,12 @@
+.tooltip__status{
+    width: 120px;
+    height: 120px;
+    margin: 0 0 32px 0;
+    display: block;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .tooltip__status{
+        margin-bottom: 40px;
+    }
+}

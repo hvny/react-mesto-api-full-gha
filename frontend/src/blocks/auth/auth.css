@@ -1,0 +1,16 @@
+.auth{
+    width: 358px;
+    box-sizing: border-box;
+    margin: 0 auto 60px auto;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    color: #ffffff;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .auth{
+        width: 260px;
+    }
+}

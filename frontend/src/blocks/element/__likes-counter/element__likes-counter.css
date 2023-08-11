@@ -1,0 +1,10 @@
+.element__likes-counter {
+    width: 22px;
+    height: 13px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+}

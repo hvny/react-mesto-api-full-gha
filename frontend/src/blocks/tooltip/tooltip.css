@@ -1,0 +1,20 @@
+.tooltip{
+    width: 430px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: #ffffff;
+    padding: 60px 0 0 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .tooltip{
+        width: 280px;
+        height: 308px;
+    }
+}
