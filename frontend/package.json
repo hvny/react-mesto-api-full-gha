@@ -2,6 +2,7 @@
   "name": "mesto",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hvny-web.students.nomoreparties.co/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -13,6 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy": "npm run build && scp -r ./build/* vadik_elsukov@51.250.74.79:/home/vadik_elsukov/react-mesto-api-full-gha/frontend/build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
