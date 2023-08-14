@@ -18,23 +18,30 @@ const limiter = rateLimit({
   max: 100,
 });
 
+/*
 const allowedCors = [
   'https://hvny-web.students.nomoreparties.co',
   'http://hvny-web.students.nomoreparties.co',
   'https://api.hvny-web.students.nomoreparties.co',
   'http://api.hvny-web.students.nomoreparties.co',
-  'localhost:3000',
+  'localhost:3001',
 ];
 
 app.use((req, res, next) => {
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Origin', '*');
   }
+  next();
+}); */
+
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
   next();
 });
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
