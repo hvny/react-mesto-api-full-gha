@@ -36,7 +36,8 @@ function App() {
     const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen;
 
     useEffect(()=>{     //получаем карточки и ифну юзера при монтировании
-        if (loggedIn){
+        const jwt = localStorage.getItem("jwt");
+        if (jwt){
             Promise.all([api.getUserInfo(), api.getInitialCards()])
             .then(([userData, cardsData])=>{
                 setCurrentUser(userData);
@@ -67,7 +68,7 @@ function App() {
             .then((res)=>{
                 setLoggedIn(true);
                 setEmail(res.data.email);
-                navigate("/");
+                navigate("/", { replace: true });
             })
             .catch(console.error);
         }

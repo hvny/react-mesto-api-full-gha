@@ -8,7 +8,6 @@ class Api {
         return fetch(`${this._baseUrl}/cards`, {
                 credentials: "include",
                 method: "GET",
-                headers: this._headers,
             })
             .then(res => this._checkForError(res));
     }
@@ -32,7 +31,6 @@ class Api {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
                 credentials: "include",
                 method: "DELETE",
-                headers: this._headers,
             })
             .then(res => this._checkForError(res));
     }
@@ -42,7 +40,6 @@ class Api {
         return fetch(`${this._baseUrl}/users/me`, {
                 credentials: "include",
                 method: "GET",
-                headers: this._headers,
             })
             .then(res => this._checkForError(res));
     }
@@ -106,7 +103,6 @@ class Api {
 export const api = new Api({
     baseUrl: "https://api.hvny-web.students.nomoreparties.co",
     headers: {
-        authorization: "107572fd-a23a-435b-9724-668d3d26cd42",
         "Content-Type": "application/json"
     }
 });
