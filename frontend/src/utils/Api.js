@@ -6,8 +6,9 @@ class Api {
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
+                credentials: "include",
                 method: "GET",
-                headers: this._headers
+                headers: this._headers,
             })
             .then(res => this._checkForError(res));
     }
@@ -15,6 +16,7 @@ class Api {
     /*добавление карточки*/
     addCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
+                credentials: "include",
                 method: "POST",
                 headers: this._headers,
                 body: JSON.stringify({
@@ -28,6 +30,7 @@ class Api {
     /*удаление карточки*/
     deleteCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
+                credentials: "include",
                 method: "DELETE",
                 headers: this._headers,
             })
@@ -37,6 +40,7 @@ class Api {
     /*получение данных юзера*/
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
+                credentials: "include",
                 method: "GET",
                 headers: this._headers,
             })
@@ -46,6 +50,7 @@ class Api {
     /*обновление данных юзера*/
     setUserInfo(data) {
         return fetch(`${this._baseUrl}/users/me`, {
+                credentials: "include",
                 method: "PATCH",
                 headers: this._headers,
                 body: JSON.stringify({
@@ -59,6 +64,7 @@ class Api {
     /*обновление аватарки */
     setUserAvatar(data) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
+                credentials: "include",
                 method: "PATCH",
                 headers: this._headers,
                 body: JSON.stringify({
@@ -72,6 +78,7 @@ class Api {
     changeLikeCardStatus(cardId, isLiked){
         if(!isLiked){
             return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+                credentials: "include",
                 method: 'DELETE',
                 headers: this._headers,
             })
@@ -79,6 +86,7 @@ class Api {
         }
         else{
             return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+                credentials: "include",
                 method: 'PUT',
                 headers: this._headers,
             })
@@ -96,7 +104,7 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: "https://mesto.nomoreparties.co/v1/cohort-65",
+    baseUrl: "https://api.hvny-web.students.nomoreparties.co",
     headers: {
         authorization: "107572fd-a23a-435b-9724-668d3d26cd42",
         "Content-Type": "application/json"

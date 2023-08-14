@@ -1,4 +1,4 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "https://api.hvny-web.students.nomoreparties.co";
 
 /*проверка запроса*/
 const checkRequest = (res) =>{
