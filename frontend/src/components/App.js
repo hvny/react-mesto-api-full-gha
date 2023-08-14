@@ -60,7 +60,7 @@ function App() {
           }
         }
     }, [isOpen]); 
-
+    
     useEffect(()=>{         //проверяем наличие токена
         const token = localStorage.getItem("userId");
         if (token){

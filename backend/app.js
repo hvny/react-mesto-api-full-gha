@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
@@ -19,14 +18,21 @@ const limiter = rateLimit({
   max: 100,
 });
 
-app.use(cors({
-  origin: ['http://localhost:3001',
-    'https://hvny-web.students.nomoreparties.co',
-    'http://hvny-web.students.nomoreparties.co',
-    'https://api.hvny-web.students.nomoreparties.co',
-    'http://api.hvny-web.students.nomoreparties.co'],
-  credentials: true,
-}));
+const allowedCors = [
+  'https://hvny-web.students.nomoreparties.co',
+  'http://hvny-web.students.nomoreparties.co',
+  'https://api.hvny-web.students.nomoreparties.co',
+  'http://api.hvny-web.students.nomoreparties.co',
+  'localhost:3000',
+];
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  next();
+});
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 app.use(bodyParser.json());
