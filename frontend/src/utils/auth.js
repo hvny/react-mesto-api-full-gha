@@ -1,5 +1,5 @@
-//export const BASE_URL = "https://api.hvny-web.students.nomoreparties.co";
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://api.hvny-web.students.nomoreparties.co";
+
 /*проверка запроса*/
 const checkRequest = (res) =>{
     if (res.ok) {
