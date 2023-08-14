@@ -1,5 +1,5 @@
-export const BASE_URL = "https://api.hvny-web.students.nomoreparties.co";
-
+//export const BASE_URL = "https://api.hvny-web.students.nomoreparties.co";
+export const BASE_URL = "http://localhost:3000";
 /*проверка запроса*/
 const checkRequest = (res) =>{
     if (res.ok) {
@@ -40,7 +40,7 @@ export const authorize = (password, email) => {
     })
     .then(checkRequest)
     .then((data) => {
-      localStorage.setItem('jwt', data._id);
+      localStorage.setItem('userId', data._id);
       return data;
     })
 };
@@ -52,7 +52,6 @@ export const getContent = (token) => {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      //Authorization: `Bearer ${token}`,
     },
   }).then(checkRequest);
 };

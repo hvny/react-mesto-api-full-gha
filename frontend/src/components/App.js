@@ -36,8 +36,8 @@ function App() {
     const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen;
 
     useEffect(()=>{     //получаем карточки и ифну юзера при монтировании
-        const jwt = localStorage.getItem("jwt");
-        if (jwt){
+        const token = localStorage.getItem("userId");
+        if (token){
             Promise.all([api.getUserInfo(), api.getInitialCards()])
             .then(([userData, cardsData])=>{
                 setCurrentUser(userData);
@@ -62,9 +62,9 @@ function App() {
     }, [isOpen]); 
 
     useEffect(()=>{         //проверяем наличие токена
-        const jwt = localStorage.getItem("jwt");
-        if (jwt){
-            auth.getContent(jwt)
+        const token = localStorage.getItem("userId");
+        if (token){
+            auth.getContent(token)
             .then((res)=>{
                 setLoggedIn(true);
                 setEmail(res.email);
@@ -72,7 +72,7 @@ function App() {
             })
             .catch(console.error);
         }
-    }, []);
+    }, [navigate]);
 
     function handleEditProfileClick(){      //открываем попап изменения профиля
         setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
@@ -101,7 +101,7 @@ function App() {
     }
 
     function handleCardLike(card) {         //ставим и убираем лайки карточки 
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some((i) => i === currentUser._id);
         
         api.changeLikeCardStatus(card._id, !isLiked)
         .then((newCard) => {
@@ -187,7 +187,7 @@ function App() {
 
     function signout(){
         setLoggedIn(false);
-        localStorage.removeItem("jwt");
+        localStorage.removeItem("userId");
         navigate("/sign-in");
     }
 

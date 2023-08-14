@@ -34,7 +34,7 @@ module.exports.deleteCard = (req, res, next) => {
       if (card.owner.toString() === req.user._id) {
         Card.deleteOne(card)
           .then((cards) => {
-            res.send({ data: cards });
+            res.send(cards);
           })
           .catch(next);
       } else {
@@ -60,7 +60,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена.');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -81,7 +81,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена.');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {

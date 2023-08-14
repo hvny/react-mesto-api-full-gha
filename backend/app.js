@@ -20,7 +20,7 @@ const limiter = rateLimit({
 });
 
 app.use(cors({
-  origin: ['http://localhost:3000',
+  origin: ['http://localhost:3001',
     'https://hvny-web.students.nomoreparties.co',
     'http://hvny-web.students.nomoreparties.co',
     'https://api.hvny-web.students.nomoreparties.co',
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(limiter);
+// app.use(limiter);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
