@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.74.79
+IP 51.250.74.79
 
 Frontend https://hvny-web.students.nomoreparties.co
 
