@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -18,29 +19,35 @@ const limiter = rateLimit({
   max: 100,
 });
 
-/*
 const allowedCors = [
   'https://hvny-web.students.nomoreparties.co',
   'http://hvny-web.students.nomoreparties.co',
   'https://api.hvny-web.students.nomoreparties.co',
   'http://api.hvny-web.students.nomoreparties.co',
-  'localhost:3001',
+  'http://localhost:3001',
+  'http://localhost:3000',
 ];
 
 app.use((req, res, next) => {
   const { origin } = req.headers;
+  const { method } = req;
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+  const reqHeaders = req.headers['access-control-request-headers'];
+
   if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', origin);
   }
-  next();
-}); */
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', reqHeaders);
+    return res.end();
+  }
+
+  return next();
+});
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
