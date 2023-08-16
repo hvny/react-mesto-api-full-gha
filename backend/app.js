@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
@@ -15,11 +16,25 @@ const NotFoundError = require('./errors/NotFoundError');
 const { PORT = 3000 } = process.env;
 const app = express();
 
+app.use(cors({
+  origin: [
+    'http://localhost:3001',
+    'http://localhost:3000',
+    'https://hvny-web.students.nomoreparties.co',
+    'http://hvny-web.students.nomoreparties.co',
+    'https://api.hvny-web.students.nomoreparties.co',
+    'http://api.hvny-web.students.nomoreparties.co'],
+  credentials: true,
+}));
+
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
 });
 
+/*
 const allowedCors = [
   'https://hvny-web.students.nomoreparties.co',
   'http://hvny-web.students.nomoreparties.co',
@@ -47,13 +62,11 @@ app.use((req, res, next) => {
 
   return next();
 });
-
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
-
+*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(helmet());
 app.use(cookieParser());
+app.use(helmet());
 app.use(requestLogger);
 app.use(limiter);
 
