@@ -1,2 +1,4 @@
 logs
 *.log
+error.log*
+request.log*
